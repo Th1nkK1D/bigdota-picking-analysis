@@ -1,0 +1,12 @@
+{
+  "name": "bigdota-picking-analysis",
+  "version": "1.0.0",
+  "description": "Dota 2 Heroes Picking Analysis",
+  "main": "index.js",
+  "repository": "https://github.com/Th1nkK1D/bigdota-picking-analysis.git",
+  "author": "Withee Poositasai <witheep@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "get-json": "^1.0.0"
+  }
+}
