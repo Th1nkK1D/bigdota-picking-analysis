@@ -4,7 +4,7 @@ async function fetchMatches(num) {
     let result = []
     let lastMatchId
 
-    for(let i = 0; i < num; i++) {
+    for(let i = 1; i <= num; i++) {
         let res
 
         try {
@@ -16,17 +16,22 @@ async function fetchMatches(num) {
         } catch (error) {
             console.log(error)
         }
-
-        // console.log(res.data)
         
         result = result.concat(res.data)
         lastMatchId = res.data[res.data.length-1].match_id
-        console.log(lastMatchId)
+
+        console.log(i*100 + '/' + num*100)
     }
     
     return result;
 }
 
-fetchMatches(2).then(res => {
-    console.log(res.length)
-})
+if(!process.argv[2]) {
+    console.log('Please define an amount of data')
+} else {
+    console.log('fetching')
+    
+    fetchMatches(Math.floor(process.argv[2]/100)).then(res => {
+        console.log(res.length)
+    })
+}
