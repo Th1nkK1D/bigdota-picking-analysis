@@ -7,6 +7,7 @@
   "author": "Withee Poositasai <witheep@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.17.1"
+    "axios": "^0.17.1",
+    "jsonfile": "^4.0.0"
   }
 }

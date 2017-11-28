@@ -1,4 +1,7 @@
 const axios = require('axios')
+const jsonfile = require('jsonfile')
+
+const output = 'matches.json'
 
 async function fetchMatches(num) {
     let result = []
@@ -29,9 +32,15 @@ async function fetchMatches(num) {
 if(!process.argv[2]) {
     console.log('Please define an amount of data')
 } else {
-    console.log('fetching')
-    
+    console.log('fetching...')
+
     fetchMatches(Math.floor(process.argv[2]/100)).then(res => {
-        console.log(res.length)
+        console.log('writing...')
+
+        jsonfile.writeFile(output, res,{spaces: 2}, function (err) {
+            console.error(err)
+        })
+
+        console.log('completed')
     })
 }
