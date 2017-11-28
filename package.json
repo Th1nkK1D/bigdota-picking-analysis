@@ -7,6 +7,6 @@
   "author": "Withee Poositasai <witheep@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "get-json": "^1.0.0"
+    "axios": "^0.17.1"
   }
 }
