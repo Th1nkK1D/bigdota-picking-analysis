@@ -3,6 +3,7 @@ const jsonfile = require('jsonfile')
 
 const output = 'matches.json'
 
+// Fetch matched async
 async function fetchMatches(num) {
     let result = []
     let lastMatchId
@@ -11,6 +12,7 @@ async function fetchMatches(num) {
         let res
 
         try {
+            // Get openDota API
             res = await axios.get('https://api.opendota.com/api/publicMatches',{
                 params: {
                     'less_than_match_id': lastMatchId
@@ -19,7 +21,8 @@ async function fetchMatches(num) {
         } catch (error) {
             console.log(error)
         }
-        
+
+        // Concat result
         result = result.concat(res.data)
         lastMatchId = res.data[res.data.length-1].match_id
 
@@ -29,6 +32,7 @@ async function fetchMatches(num) {
     return result;
 }
 
+// Main
 if(!process.argv[2]) {
     console.log('Please define an amount of data')
 } else {
@@ -37,8 +41,10 @@ if(!process.argv[2]) {
     fetchMatches(Math.floor(process.argv[2]/100)).then(res => {
         console.log('writing...')
 
-        jsonfile.writeFile(output, res,{spaces: 2}, function (err) {
-            console.error(err)
+        jsonfile.writeFile(output, res, function (err) {
+            if(err) {
+                console.error(err)
+            }
         })
 
         console.log('completed')
