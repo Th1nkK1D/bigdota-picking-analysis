@@ -20,6 +20,7 @@ async function fetchMatches(num) {
             })
         } catch (error) {
             console.log(error)
+            break
         }
 
         // Concat result

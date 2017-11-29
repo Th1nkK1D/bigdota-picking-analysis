@@ -1,5 +1,8 @@
 matches.json
 
+# R
+.Rhistory
+
 # Logs
 logs
 *.log
