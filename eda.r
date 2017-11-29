@@ -23,6 +23,9 @@ test <- subset(data, sample == FALSE)
 # Unnest winner
 train %>% transform(winner = strsplit(winner, ",")) %>% unnest(winner) -> train 
 
+# Split heroes string
+test %>% separate(winner, c('w1', 'w2','w3','w4','w5'), ',') -> test
+
 # Drop unused data
 train <- train[,c('match_id','l1', 'l2','l3','l4','l5','winner')]
 test <- test[,c('match_id','l1', 'l2','l3','l4','l5','winner')]
